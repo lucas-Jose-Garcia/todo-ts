@@ -1,0 +1,37 @@
+:root {
+    --product-light-300: #4EA8DE;
+    --product-light-400: #8284FA;
+
+    --product-dark-600: #1E6F9F;
+    --product-dark-800: #8284FA;
+
+    --base-100: #F2F2F2;
+    --base-200: #D9D9D9;
+    --base-300: #808080;
+    --base-400: #333333;
+    --base-500: #262626;
+    --base-600: #1A1A1A;
+    --base-700: #0D0D0D;
+
+    --feedbach-danger: #E25858;
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--base-600);
+    color: var(--base-100);
+    -webkit-font-smoothing: antialiased;
+}
+
+body,input, textarea, button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--base-100);
+}
