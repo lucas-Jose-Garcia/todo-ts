@@ -47,6 +47,10 @@ export function App() {
     return newTasks
   }
 
+  function countCompletedTasks() {
+    return tasks.filter(task => task.completed === true).length
+  }
+
   return (
     <div>
       <header className={styles.header}>
@@ -68,8 +72,8 @@ export function App() {
         
         <section className={styles.sectionTasks}>
           <InfoTasks 
-            tasksCreated={0}
-            completedTasks={0} 
+            tasksCreated={tasks.length}
+            completedTasks={countCompletedTasks} 
           />
           {tasks.length === 0 ? <EmptyTasks /> : (
             tasks.map(task => {

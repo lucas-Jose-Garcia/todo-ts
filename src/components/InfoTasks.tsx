@@ -2,7 +2,7 @@ import styles from './InfoTasks.module.css'
 
 interface InfoTasksProps {
     tasksCreated: number;
-    completedTasks: number;
+    completedTasks: () => number;
 }
 
 export function InfoTasks({ tasksCreated, completedTasks }:InfoTasksProps) {
@@ -14,7 +14,7 @@ export function InfoTasks({ tasksCreated, completedTasks }:InfoTasksProps) {
             </div>
             <div>
               <p className={styles.finished}>Concluídas</p>
-              <span>{completedTasks}</span>
+              <span>{completedTasks() > 0 ? `${completedTasks()} de ${tasksCreated}` : '0'}</span>
             </div>
         </div>
     )
