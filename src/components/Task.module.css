@@ -79,3 +79,9 @@
 .task input:checked:before {
     opacity: 1;
 }
+
+@media (max-width: 768px) {
+    .task {
+      width: 90vw;
+    }
+}

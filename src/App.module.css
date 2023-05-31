@@ -30,27 +30,38 @@
   color: var(--product-dark-800);
 } 
 
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .taskFrom {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5;
+  gap: 0.5rem;
   
   position: absolute;
-  width: 46rem;
+  max-width: 46rem;
+  width: 90%;
   height: 3.375rem;
-  left: calc(50% - 46rem/2);
   top: 10.812rem;
 }
 
 .taskFrom input {
   padding: 1rem;
-  width: 39.875rem;
+  width: 100%;
   background: var(--base-500);
   border: 1px solid var(--base-700);
   border-radius: 8px;
 
+}
+
+.taskFrom input:focus {
+  outline: transparent;
 }
 
 .taskFrom button {
@@ -69,8 +80,7 @@
   align-items: center;
   flex-direction: column;
 
-  width: 46rem;
-  left: calc(50% - 46rem/2);
+  max-width: 46rem;
   position: absolute;
   top: 18.187rem;
 }

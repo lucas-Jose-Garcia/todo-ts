@@ -7,25 +7,30 @@
     
   }
   
-  .tasksInfo div {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.tasksInfo div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+  
+.tasksInfo div span {
+  background: var(--base-400);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.tasksInfo div p {
+  color: var(--product-light-300);
+  font-weight: 700;
+}
+
+.tasksInfo .finished {
+  color: var(--product-light-400);
+}
+  
+
+@media (max-width: 768px) {
+  .tasksInfo {
+    width: 90vw;
   }
-  
-  .tasksInfo div span {
-    background: var(--base-400);
-    padding: 2px 8px;
-    border-radius: 999px;
-  }
-  
-  .tasksInfo div p {
-    color: var(--product-light-300);
-    font-weight: 700;
-  }
-  
-  .tasksInfo .finished {
-    color: var(--product-light-400);
-  }
-  
-  
+}
