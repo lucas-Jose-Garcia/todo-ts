@@ -1,11 +1,19 @@
+import type { Tasks } from '../App';
 import styles from './Task.module.css'
 import { Trash } from "phosphor-react";
 
-export function Task() {
+interface TasksProps {
+    task: Tasks;
+    onCheckboxChange: (id: string) => void;
+  }
+
+export function Task({task, onCheckboxChange}: TasksProps) {
     return (
-        <div className={styles.task}>
-            <input type="checkbox" />
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur unde aut iste fuga similique adipisci velit saepe. Expedita quos in magnam impedit provident.</p>
+        <div key={task.id} className={task.completed ? `${styles.task} ${styles.completed}` : styles.task}>
+            <div>
+                <input type="checkbox" checked={task.completed} onClick={() => onCheckboxChange(task.id)}/>
+                <p>{task.content}</p>   
+            </div>
             <button>
               <Trash size={20} />
             </button>

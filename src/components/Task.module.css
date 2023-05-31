@@ -1,6 +1,7 @@
 .task {
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
     padding: 1rem;
     gap: 0.75rem;
     margin-top: 1.5rem;
@@ -14,18 +15,26 @@
     
     font-size: 0.875rem;
     line-height: 1.4;
-  }
+    width: 46rem;
+
+}
   
-  .task button {
+.task div {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.task button {
     background-color: transparent;
     border: none;
-  }
+}
   
-  .task button:hover {
+.task button:hover {
     color: var(--feedback-danger);
-  }
+}
   
-  .task input {
+.task input {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -40,12 +49,17 @@
     margin-block: auto;
   }
   
-  .task input:checked {
+.task input:checked {
     border: 2px solid var(--product-dark-800);
     background-color: var(--product-dark-800);
-  }
+}
+
+.task input:checked ~ p {
+    color: var(--base-300);
+    text-decoration: line-through;
+}
   
-  .task input:before {
+.task input:before {
     content: '\2713';
     margin-inline: auto;
     margin-block: auto;
@@ -60,8 +74,8 @@
     top: -8px;
     left: -0.6px;
     
-  }
+}
   
-  .task input:checked:before {
+.task input:checked:before {
     opacity: 1;
-  }
+}
