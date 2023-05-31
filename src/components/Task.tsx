@@ -5,9 +5,10 @@ import { Trash } from "phosphor-react";
 interface TasksProps {
     task: Tasks;
     onCheckboxChange: (id: string) => void;
+    onDeleteTask: (id: string) => void;
   }
 
-export function Task({task, onCheckboxChange}: TasksProps) {
+export function Task({task, onCheckboxChange, onDeleteTask}: TasksProps) {
     return (
         <div key={task.id} className={task.completed ? `${styles.task} ${styles.completed}` : styles.task}>
             <div>
@@ -15,7 +16,7 @@ export function Task({task, onCheckboxChange}: TasksProps) {
                 <p>{task.content}</p>   
             </div>
             <button>
-              <Trash size={20} />
+              <Trash size={20} onClick={() => onDeleteTask(task.id)}/>
             </button>
         </div>
     )

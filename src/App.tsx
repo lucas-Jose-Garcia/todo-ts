@@ -36,6 +36,14 @@ export function App() {
     setTasks(organizeTasks(newTasks))
   }
 
+  function handleDeleteTask(id: string) {
+    const newTasks = tasks.filter(task => {
+      return task.id !== id
+    })
+
+    setTasks(newTasks)
+  }
+
   function organizeTasks(tasks: Tasks[]) {
     const newTasks: Tasks[] = []
     tasks.forEach(task => {
@@ -78,7 +86,7 @@ export function App() {
           {tasks.length === 0 ? <EmptyTasks /> : (
             tasks.map(task => {
               return (
-                <Task key={task.id} task={task} onCheckboxChange={handleCheckboxChange} />
+                <Task key={task.id} task={task} onCheckboxChange={handleCheckboxChange} onDeleteTask={handleDeleteTask} />
               )
             })
           )}
