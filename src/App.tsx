@@ -2,6 +2,24 @@ import styles from './App.module.css'
 import './global.css'
 import logoSvg from './assets/logo.svg'
 import plus from './assets/plus.svg'
+import {Trash} from '@phosphor-icons/react'
+import { EmptyTasks } from './components/EmptyTasks'
+import { InfoTasks } from './components/InfoTasks'
+import { Task } from './components/Task'
+
+interface Tasks {
+  id: string;
+  content: string;
+  completed: boolean;
+}
+
+const tasks: Tasks[] = [
+  {
+    id: "AB560594",
+    content: "Estudar JavaScript",
+    completed: false
+  }
+]
 
 export function App() {
   return (
@@ -23,23 +41,15 @@ export function App() {
           </button>
         </form>
         
-        <section>
-          <div className={styles.tasksInfo}>
-            <div>
-              <p>Tarefas criadas</p>
-              <span>0</span>
-            </div>
-            <div>
-              <p>Concluídas</p>
-              <span>0</span>
-            </div>
-          </div>
+        <section className={styles.sectionTasks}>
+          <InfoTasks 
+            tasksCreated={0}
+            completedTasks={0} 
+          />
 
-          <div className={styles.separator}/>
+          {/* <EmptyTasks /> */}
           
-          <div>
-            {/* tasks */}
-          </div>
+          <Task />
         </section>
       </main>
 
