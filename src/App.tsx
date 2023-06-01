@@ -6,7 +6,8 @@ import { EmptyTasks } from './components/EmptyTasks'
 import { InfoTasks } from './components/InfoTasks'
 import { Task } from './components/Task'
 import { v4 as uuidv4 } from 'uuid';
-import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
+import { useState, useEffect, ChangeEvent, FormEvent, InvalidEvent } from 'react'
+import { ArrowClockwise } from 'phosphor-react'
 
 export interface Tasks {
   id: string;
@@ -21,6 +22,7 @@ export function App() {
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     setInputValue(event.target.value)
+    event.target.setCustomValidity('')
   }
   
   function handleCreateTask(event: FormEvent) {
@@ -35,6 +37,7 @@ export function App() {
 
     setTasks(newTasks)
     saveTasks(newTasks)
+    setInputValue('')
   }
 
   function handleCheckboxChange(id: string) {
@@ -54,6 +57,10 @@ export function App() {
     })
 
     setTasks(newTasks)
+  }
+
+  function hendleInvalidTask(event: InvalidEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('Esse campo é obrigatório!')
   }
 
   function saveTasks(tasks: Tasks[]) {
@@ -97,7 +104,14 @@ export function App() {
 
       <main className={styles.content}>
         <form onSubmit={handleCreateTask} className={styles.taskFrom}>
-          <input placeholder="Adicione uma nova tarefa" value={inputValue} onChange={handleInputChange}/>
+          <input 
+            placeholder="Adicione uma nova tarefa" 
+            value={inputValue} 
+            onChange={handleInputChange}
+            onInvalid={hendleInvalidTask}
+            required
+          />
+          
           <button type="submit">
             Criar
             <img src={plus}/>
@@ -122,6 +136,11 @@ export function App() {
             })
           )}
         </section>
+
+        <footer>
+          <ArrowClockwise size={25} />
+          <span>Recomeçar</span>
+        </footer>
       </main>
 
 

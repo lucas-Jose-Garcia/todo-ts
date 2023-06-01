@@ -15,9 +15,11 @@ export function Task({task, onCheckboxChange, onDeleteTask}: TasksProps) {
                 <input type="checkbox" defaultChecked={task.completed} onClick={() => onCheckboxChange(task.id)}/>
                 <p>{task.content}</p>   
             </div>
-            <button>
-              <Trash size={20} onClick={() => onDeleteTask(task.id)}/>
-            </button>
+            <div>
+                <button>
+                    <Trash size={20} onClick={() => onDeleteTask(task.id)}/>
+                </button>
+            </div>
         </div>
     )
 }

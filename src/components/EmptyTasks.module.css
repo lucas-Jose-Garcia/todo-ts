@@ -1,5 +1,6 @@
 .emptyTasks {
-    width: 100%;
+    max-width: 46rem;
+    width: 90vw;
     height: 15.25rem;
   
     display: flex;
