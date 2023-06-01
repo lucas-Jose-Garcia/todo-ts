@@ -1,0 +1,54 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    background-color: var(--base-500);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.content h2 {
+    margin-bottom: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.buttons button {
+    background-color: var(--base-400);
+    padding: 0.5rem;
+    width: 100px;
+    cursor: pointer;
+
+    border: 1px solid var(--base-400);
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.buttons .confirm:hover {
+    color: var(--product-light-400);
+}
+
+.buttons .cancel:hover {
+    color: var(--feedback-danger);
+}
+
+@media (max-width: 768px) {
+    .content {
+        max-width: 18rem;
+    }
+}

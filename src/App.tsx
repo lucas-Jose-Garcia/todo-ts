@@ -8,6 +8,7 @@ import { Task } from './components/Task'
 import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect, ChangeEvent, FormEvent, InvalidEvent } from 'react'
 import { ArrowClockwise } from 'phosphor-react'
+import { Modal } from './components/Modal'
 
 export interface Tasks {
   id: string;
@@ -19,6 +20,8 @@ export function App() {
   const [tasks, setTasks] = useState<Tasks[] | []>([])
 
   const [inputValue, setInputValue] = useState('')
+
+  const [modalOpen, setModalOpen] = useState(false)
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     setInputValue(event.target.value)
@@ -57,6 +60,7 @@ export function App() {
     })
 
     setTasks(newTasks)
+    saveTasks(newTasks)
   }
 
   function hendleInvalidTask(event: InvalidEvent<HTMLInputElement>) {
@@ -84,6 +88,19 @@ export function App() {
 
   function countCompletedTasks() {
     return tasks.filter(task => task.completed === true).length
+  }
+
+  function hendleOpenModalRestart() {
+    setModalOpen(true)
+  }
+
+  function handleCloseModalRestart() {
+    setModalOpen(false)
+  }
+
+  function handleRestart() {
+    setTasks([])
+    saveTasks([])
   }
 
   useEffect(() => {
@@ -135,12 +152,23 @@ export function App() {
               )
             })
           )}
+
+          {tasks.length === 0 ? null :
+          <footer onClick={hendleOpenModalRestart}>
+            <ArrowClockwise size={25} />
+            <span>Recomeçar</span>
+          </footer>}
         </section>
 
-        <footer>
-          <ArrowClockwise size={25} />
-          <span>Recomeçar</span>
-        </footer>
+        <Modal 
+          isOpen={modalOpen}
+          onClose={handleCloseModalRestart}
+          onConfirm={handleRestart}
+        >
+        <h2>Confirmação</h2>
+        <p>Deseja realmente deletar todas as suas tarefas?</p>
+        </Modal>
+
       </main>
 
 
